@@ -64,6 +64,13 @@ namespace XiaoCao
             return runner;
         }
 
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="runner"></param>
+        /// <param name="owner"></param>
+        /// <param name="xcevents"></param>
+        /// <returns></returns>
 
         private static XCEventsTrack AddTrackToRunner(XCEventsRunner runner, SkillOwner owner, List<XCEvent> xcevents)
         {
