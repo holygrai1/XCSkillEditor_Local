@@ -111,6 +111,15 @@ namespace XiaoCao
         {
             OnValueChangeEvent?.Invoke(netID);
         }
+        
+        
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="netId"></param>
+        /// <param name="isLocalOnly"></param>
+        /// <param name="name"></param>
+        /// <param name="msg"></param>
 
         public void SendBool(uint netId, bool isLocalOnly,string name, bool msg)
         {
