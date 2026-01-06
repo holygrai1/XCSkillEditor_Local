@@ -20,7 +20,7 @@ public class PrefabReplacer : EditorWindow
         GUILayout.Label("Prefab Replacer", EditorStyles.boldLabel);
         prefabToReplace = EditorGUILayout.ObjectField("Prefab to Replace", prefabToReplace, typeof(GameObject), false) as GameObject;
 
-        if (GUILayout.Button("ѡ��"))
+        if (GUILayout.Button("选中"))
         {
             objectsToReplace = new List<GameObject>();
             foreach (GameObject obj in Selection.gameObjects)
@@ -37,7 +37,7 @@ public class PrefabReplacer : EditorWindow
         }
 
 
-        if (GUILayout.Button("�滻"))
+        if (GUILayout.Button("替换"))
         {
             if (prefabToReplace == null)
             {

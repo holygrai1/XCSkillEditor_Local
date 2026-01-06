@@ -14,7 +14,7 @@ namespace Assets.Editor
             instance = EditorWindow.GetWindow<EditorAnimDisplay>();
             instance.Show();
             //ShowUtility() 实体窗口样式
-        }
+        }       
         #endregion
 
         public AnimationClip[] clips;

@@ -13,14 +13,14 @@ namespace XiaoCao
     }
     public static class PlayEventMsg
     {
-        public static string SetCanMove = "SetCanMove"; //ÒÆ¶¯¿ª¹Ø
-        public static string SetCanRotate = "SetCanRotate"; //Ğı×ª¿ª¹Ø
-        public static string SetUnMoveTime = "SetUnMoveTime"; //ÉèÖÃ²»ÄÜ¶¯µÄÊ±¼ä
-        public static string ActivePlayerRender = "ActivePlayerRender"; //Òş²ØÍæ¼ÒMesh
-        public static string TimeStop = "TimeStop"; //¶ÙÖ¡
-        public static string SetNoGravityT = "SetNoGravityT"; //ÖØÁ¦¿ª¹Ø
-        public static string SetNoBreakTime = "SetNoBreakTime"; //°ÔÌå¿ª¹Ø
-        public static string PlayAudio = "PlayAudio"; //°ÔÌå¿ª¹Ø
+        public static string SetCanMove = "SetCanMove"; //ç§»åŠ¨å¼€å…³
+        public static string SetCanRotate = "SetCanRotate"; //æ—‹è½¬å¼€å…³
+        public static string SetUnMoveTime = "SetUnMoveTime"; //è®¾ç½®ä¸èƒ½åŠ¨çš„æ—¶é—´
+        public static string ActivePlayerRender = "ActivePlayerRender"; //éšè—ç©å®¶Mesh
+        public static string TimeStop = "TimeStop"; //é¡¿å¸§
+        public static string SetNoGravityT = "SetNoGravityT"; //é‡åŠ›å¼€å…³
+        public static string SetNoBreakTime = "SetNoBreakTime"; //éœ¸ä½“å¼€å…³
+        public static string PlayAudio = "PlayAudio"; //éœ¸ä½“å¼€å…³
 
     }
 
@@ -58,7 +58,7 @@ namespace XiaoCao
 
         public float NorAckTime = 1.6f;
     }
-    //Í¨ÓÃÍøÂçÏûÏ¢
+    //é€šç”¨ç½‘ç»œæ¶ˆæ¯
     public struct PlayerMessge
     {
         public DataType dataType;
@@ -99,23 +99,23 @@ namespace XiaoCao
         Object
     }
 
-    //¹«¹²ÒıÓÃ ¶à¸ö¼¼ÄÜ¹«ÓÃÒ»¸ö
-    //OwnerÊÇ¼¼ÄÜµÄÖ÷Ìå/¸¸½Úµã ¶¯»­ÊÇplayer,¼¼ÄÜÊÇÌØĞ§ 
+    //å…¬å…±å¼•ç”¨ å¤šä¸ªæŠ€èƒ½å…¬ç”¨ä¸€ä¸ª
+    //Owneræ˜¯æŠ€èƒ½çš„ä¸»ä½“/çˆ¶èŠ‚ç‚¹ åŠ¨ç”»æ˜¯player,æŠ€èƒ½æ˜¯ç‰¹æ•ˆ 
     public class SkillOwner
     {
         public uint netId;
         //trigger
         public int triggerLayer;
 
-        public bool enableAck; // ÕæÊµ¹¥»÷È¨ÏŞ Ïàµ±ÓÚlocal
+        public bool enableAck; // çœŸå®æ”»å‡»æƒé™ ç›¸å½“äºlocal
 
-        public bool isCustomObject; //ÓĞÉú³ÉÎïÌå
+        public bool isCustomObject; //æœ‰ç”Ÿæˆç‰©ä½“
 
         public MonoAttacker attacker;
 
         public Transform AckerTF => attacker.transform;
 
-        //eventµÄÊµÌå¶ÔÏó, ±ÈÈçÌØĞ§
+        //eventçš„å®ä½“å¯¹è±¡, æ¯”å¦‚ç‰¹æ•ˆ
         public Transform eventOwnerTF;
 
         public SkillOwner() { }

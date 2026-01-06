@@ -28,14 +28,14 @@ namespace XiaoCao
 
         #endregion
 
-        #region =====ÊÂ¼ş=======
+        #region =====äº‹ä»¶=======
         public delegate void PlayerEvent(uint netId);
 
         private Action truePlayerStartAct;
 
         public Action<uint> disableAckerAct;
 
-        private PlayerEvent OnValueChangeEvent; //ÊıÖµ¸Ä±äÊ± »òµÇÂ¼»òÕßµÇ³ö
+        private PlayerEvent OnValueChangeEvent; //æ•°å€¼æ”¹å˜æ—¶ æˆ–ç™»å½•æˆ–è€…ç™»å‡º
 
         public void AddListener(ClientEventType eventType, PlayerEvent player)
         {
@@ -52,7 +52,7 @@ namespace XiaoCao
         {
             if (IsLocalPlayerReady)
             {
-                //Èç¹ûÒÑ¾­¿ªÊ¼¾ÍÖ±½Óµ÷ÓÃ
+                //å¦‚æœå·²ç»å¼€å§‹å°±ç›´æ¥è°ƒç”¨
                 addAciton.Invoke();
             }
             else
@@ -65,7 +65,7 @@ namespace XiaoCao
             truePlayerStartAct?.Invoke();
         }
 
-        #endregion =====ÊÂ¼ş=======
+        #endregion =====äº‹ä»¶=======
 
 
         public MonoAttacker GetAcker(uint netID)
@@ -124,6 +124,16 @@ namespace XiaoCao
                 Debug.Log($"yns Msg {name} {msg}");
             }
         }
+        
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="netId"></param>
+        /// <param name="isLocalOnly"></param>
+        /// <param name="name"></param>
+        /// <param name="num"></param>
+        /// <param name="isOn"></param>
+        /// <param name="str"></param>
 
         public void SendAll(uint netId, bool isLocalOnly, string name, float num, bool isOn =false, string str="")
         {
@@ -172,7 +182,7 @@ namespace XiaoCao
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="DamagerNetId">ÊÜ»÷¶ÔÏó</param>
+        /// <param name="DamagerNetId">å—å‡»å¯¹è±¡</param>
         /// <param name="ackInfo"></param>
 
         public void CmdOnDam(uint DamagerNetId, AckInfo ackInfo)
@@ -180,16 +190,16 @@ namespace XiaoCao
             Debug.Log($"yns CmdOnDam {DamagerNetId} {ackInfo}");
             SkillSetting setting = SkillSettingMgr.Instance.GetSkillSetting(ackInfo.ackId);
 
-            //»ñÈ¡ÊÜ»÷Õß
+            //è·å–å—å‡»è€…
             var OnDamager = GetAcker(DamagerNetId);
 
-            //ÉËº¦ÊıÖµ
+            //ä¼¤å®³æ•°å€¼
             float DamageValue = OnDamager.Ack * setting.AckRate * Random.Range(0.95f, 1.05f); // * random;
 
 
-            //½áËã×îÖÕÑªÁ¿
+            //ç»“ç®—æœ€ç»ˆè¡€é‡
             int targetHp = Math.Max(Mathf.RoundToInt(OnDamager.playerData.hp - DamageValue), 0);
-            //ÓÃÓÚÉËº¦Êı×ÖÏÔÊ¾
+            //ç”¨äºä¼¤å®³æ•°å­—æ˜¾ç¤º
             ackInfo.ackValue = DamageValue;
 
             ackInfo.lastState = OnDamager.damageState;
@@ -219,10 +229,10 @@ namespace XiaoCao
             }
 
 
-            //ĞŞ¸ÄplayerData
+            //ä¿®æ”¹playerData
             OnDamager.playerData.hp = targetHp;
 
-            //Ö´ĞĞ±íÏÖ²ã
+            //æ‰§è¡Œè¡¨ç°å±‚
             IAttacker onDamgerer = GetAcker(DamagerNetId);
             onDamgerer.OnDam(ackInfo);
         }

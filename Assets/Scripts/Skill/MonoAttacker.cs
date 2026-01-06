@@ -18,11 +18,11 @@ namespace XiaoCao
 
         #region NetWork
 
-        public bool isTruePlayer = false; //ÊÇ¿Í»§¶Ë¿ØÖÆµÄ½ÇÉ«
+        public bool isTruePlayer = false; //ï¿½Ç¿Í»ï¿½ï¿½Ë¿ï¿½ï¿½ÆµÄ½ï¿½É«
 
         [Header("MainSetting")]
 
-        //Ä£ÐÍ
+        //Ä£ï¿½ï¿½
         public AgentModelType agentType;
 
         public bool isEnableAck => true;
@@ -33,7 +33,7 @@ namespace XiaoCao
         #endregion
         public Animator animator;
         [SerializeField]
-        [Header("ÑªÌõÎ»ÖÃ")]
+        [Header("Ñªï¿½ï¿½Î»ï¿½ï¿½")]
         private Transform _topTranform;
         public Transform TopTranform
         {
@@ -107,10 +107,10 @@ namespace XiaoCao
             ///=> <see cref="PlayerState.SetSlowRoteAnim"/>
         }
 
-        //²éÕÒ
-        //seeR£ºÊÓ¾õ·¶Î§
-        //angle:ÊÓ¾õ¼Ð½Ç 0-180 £¬´óÓÚ90±íÊ¾´¦ÓÚºó·½
-        //hearR:Ìý¾õ·¶Î§; ¸ºÊý->Ã»ÓÐÌý¾õ·¶Î§,0->¸ù¾Ýangle×Ô¶¯¼ÆËãÌý¾õ·¶Î§¡£²¢ÇÒ¹æ¶¨seeR>hearR
+        //ï¿½ï¿½ï¿½ï¿½
+        //seeRï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½Î§
+        //angle:ï¿½Ó¾ï¿½ï¿½Ð½ï¿½ 0-180 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½90ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Úºï¿½
+        //hearR:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§; ï¿½ï¿½ï¿½ï¿½->Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§,0->ï¿½ï¿½ï¿½ï¿½angleï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½Ò¹æ¶¨seeR>hearR
         public MonoAttacker SearchEnemy(float seeR = 15, float seeAngle = 180, float hearR = 0)
         {
             MonoAttacker res = null;
@@ -135,17 +135,17 @@ namespace XiaoCao
                         {
                             hearR = seeAngle / 180 * seeR;
                         }
-                        //Ìý¾õ²éÕÒ
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         isFinded = curDis < hearR;
                     }
 
                     if (isFinded)
                     {
-                        //curAngle ½Ó½ü 0 , Ëã³öÀ´µÄ¾àÀëÔ½Ð¡
+                        //curAngle ï¿½Ó½ï¿½ 0 , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Ô½Ð¡
                         float reAngleRete = Mathf.Lerp(1, 1.5f, curAngle / 180);
 
-                        tmpdis = curDis* reAngleRete;//¼ÆËã¾àÀë*¼Ð½ÇÈ¨ÖØ
-                        //±È½Ï Ñ¡³ö×î½üµÄµ¥Î»
+                        tmpdis = curDis* reAngleRete;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*ï¿½Ð½ï¿½È¨ï¿½ï¿½
+                        //ï¿½È½ï¿½ Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Î»
                         if (tmpdis > 0 && tmpdis < minDis)
                         {
                             minDis = tmpdis;
@@ -159,8 +159,8 @@ namespace XiaoCao
 
 
         /// <param name="tf"></param>
-        /// <param name="minAngle">ÕýÇ°·½ÏòÓëµÐÈË·½ÏòµÄ¼Ð½Ç0-180,´óÓÚ90¶ÈÔò±íÊ¾ÔÚÉíºó</param>
-        /// <param name="curAngle">Êä³öµ±Ç°¼Ð½Ç</param>
+        /// <param name="minAngle">ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½Ä¼Ð½ï¿½0-180,ï¿½ï¿½ï¿½ï¿½90ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
+        /// <param name="curAngle">ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ð½ï¿½</param>
         /// <returns></returns>
         public bool IsInRangeAngle(Transform tf, float minAngle, out float curAngle)
         {
@@ -210,7 +210,7 @@ namespace XiaoCao
         public float cdRate = 1;
         public Action action;
         public bool isRuning = true;
-        public bool isLoop = false;//Ê±¼äµ½×Ô¶¯½áÊø¼ÆÊ± ²»Ñ­»·, Ñ­»·ÐèÒªResetTimer()
+        public bool isLoop = false;//Ê±ï¿½äµ½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê± ï¿½ï¿½Ñ­ï¿½ï¿½, Ñ­ï¿½ï¿½ï¿½ï¿½ÒªResetTimer()
 
         public float FillAmount
         {
@@ -272,7 +272,7 @@ namespace XiaoCao
             }
             else
             {
-                //Èç¹û ×·¼ÓÊ±¼ä ´óÓÚ Ê£ÓàÊ±¼ä ,Ôò°ÑÊ£ÓàÊ±¼ä ÉèÖÃÎª×·¼ÓÊ±¼ä ->¼ÌÐøÔËÐÐ
+                //ï¿½ï¿½ï¿½ ×·ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ê£ï¿½ï¿½Ê±ï¿½ï¿½ ,ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Îª×·ï¿½ï¿½Ê±ï¿½ï¿½ ->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 var resTime = exitTime - timer;
                 if (addTime > resTime)
                 {
